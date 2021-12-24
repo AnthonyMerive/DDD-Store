@@ -15,6 +15,8 @@ public class Contabilidad extends AggregateEvent<ContabilidadID> {
 
     public Contabilidad(ContabilidadID entityId) {
         super(entityId);
+        subscribe(new ContabilidadChange(this));
+
     }
 
     public Set<Ganancia> ganancias() {

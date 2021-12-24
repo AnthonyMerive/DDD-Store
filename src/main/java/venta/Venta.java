@@ -16,6 +16,8 @@ public class Venta extends AggregateEvent<VentaID> {
 
     public Venta(VentaID entityId) {
         super(entityId);
+        subscribe(new VentaChange(this));
+
     }
 
     public Set<Vendedor> vendedores() {

@@ -17,6 +17,8 @@ public class Domicilio extends AggregateEvent<DomicilioID> {
 
     public Domicilio(DomicilioID entityId) {
         super(entityId);
+        subscribe(new DomicilioChange(this));
+
     }
 
     public Set<Repartidor> repartidores() {
