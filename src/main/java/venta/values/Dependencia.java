@@ -1,4 +1,10 @@
 package venta.values;
 
-public class Dependencia {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Dependencia implements ValueObject<String> {
+
+    public String value() {
+        return null;
+    }
 }

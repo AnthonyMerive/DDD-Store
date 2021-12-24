@@ -1,4 +1,10 @@
 package contabilidad.values;
 
-public class Concepto {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Concepto implements ValueObject<String> {
+
+    public String value() {
+        return null;
+    }
 }
