@@ -1,4 +1,6 @@
 package venta.values;
 
-public class ProductoID {
+import co.com.sofka.domain.generic.Identity;
+
+public class ProductoID extends Identity {
 }
