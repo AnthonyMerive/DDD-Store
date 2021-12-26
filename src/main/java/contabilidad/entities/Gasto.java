@@ -23,7 +23,7 @@ public class Gasto extends Entity<GananciaID> {
         return valor;
     }
 
-    public Gasto(GananciaID entityId, Concepto concepto, Descripcion descripcion, Valor valor) {
+    public Gasto(GastoID entityId, Concepto concepto, Descripcion descripcion, Valor valor) {
         super(entityId);
         this.concepto = concepto;
         this.descripcion = descripcion;

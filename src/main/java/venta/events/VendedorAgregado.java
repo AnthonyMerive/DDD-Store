@@ -22,7 +22,7 @@ public class VendedorAgregado extends DomainEvent{
         return dependencia;
     }
 
-    public MontoRecibido mntoRecibido() {
+    public MontoRecibido montoRecibido() {
         return montoRecibido;
     }
 
@@ -35,4 +35,5 @@ public class VendedorAgregado extends DomainEvent{
         this.dependencia = dependencia;
         this.montoRecibido = montoRecibido;
     }
+
 }

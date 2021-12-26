@@ -10,7 +10,7 @@ public class IngresoAgregado extends DomainEvent {
     private final Descripcion descripcion;
     private final Valor valor;
 
-    public IngresoID gananciaID() {
+    public IngresoID ingresoID() {
         return ingresoID;
     }
 
