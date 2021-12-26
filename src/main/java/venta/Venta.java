@@ -1,6 +1,7 @@
 package venta;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+
 import domicilio.values.DomicilioID;
 import venta.entities.*;
 import venta.events.*;
@@ -30,6 +31,24 @@ public class Venta extends AggregateEvent<VentaID> {
 
     public Set<Producto> productos() {
         return productos;
+    }
+
+    public Optional<Vendedor> obtenerVendedorPorID(VendedorID vendedorID){
+        return vendedores
+                .stream()
+                .filter(vendedor -> vendedor.identity().equals(vendedorID)).findFirst();
+    }
+
+    public Optional<Cliente> obtenerClientePorID(ClienteID clienteID){
+        return clientes()
+                .stream()
+                .filter(cliente -> cliente.identity().equals(clienteID)).findFirst();
+    }
+
+    public Optional<Producto> obtenerProductoPorID(ProductoID productoID){
+        return productos
+                .stream()
+                .filter(producto-> producto.identity().equals(productoID)).findFirst();
     }
 
     //Commands:

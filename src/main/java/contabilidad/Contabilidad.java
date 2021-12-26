@@ -31,6 +31,24 @@ public class Contabilidad extends AggregateEvent<ContabilidadID> {
         return ingresos;
     }
 
+    public Optional<Ganancia> obtenerGananciaPorID(GananciaID gananciaID){
+        return ganancias()
+                .stream()
+                .filter(ganancia -> ganancia.identity().equals(gananciaID)).findFirst();
+    }
+
+    public Optional<Gasto> obtenerGastoPorID(GastoID gastoID){
+        return gastos()
+                .stream()
+                .filter(gasto -> gasto.identity().equals(gastoID)).findFirst();
+    }
+
+    public Optional<Ingreso> obtenerIngresoPorID(IngresoID ingresoID){
+        return ingresos()
+                .stream()
+                .filter(ingreso -> ingreso.identity().equals(ingresoID)).findFirst();
+    }
+
     //Commands:
 
     public void agregarGanancia(GananciaID gananciaID, Valor valor) {

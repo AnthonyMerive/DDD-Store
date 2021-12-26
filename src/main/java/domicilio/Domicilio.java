@@ -7,6 +7,7 @@ import domicilio.values.*;
 import domicilio.events.*;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Domicilio extends AggregateEvent<DomicilioID> {
@@ -31,6 +32,24 @@ public class Domicilio extends AggregateEvent<DomicilioID> {
 
     public Set<Orden> ordenes() {
         return ordenes;
+    }
+
+    public Optional<Repartidor> obtenerRepartidorPorID(RepartidorID repartidorID){
+        return repartidores
+                .stream()
+                .filter(repartidor -> repartidor.identity().equals(repartidorID)).findFirst();
+    }
+
+    public Optional<Ruta> obtenerRutaPorID(RutaID rutaID){
+        return rutas()
+                .stream()
+                .filter(ruta -> ruta.identity().equals(rutaID)).findFirst();
+    }
+
+    public Optional<Orden> obtenerOrdenPorID(OrdenID ordenID){
+        return ordenes()
+                .stream()
+                .filter(orden -> orden.identity().equals(ordenID)).findFirst();
     }
 
     //Commands:
