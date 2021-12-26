@@ -2,11 +2,11 @@ package domicilio.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
-import java.util.Date;
+import java.time.LocalTime;
 
-public class HoraEntrega implements ValueObject<Date> {
+public class HoraEntrega implements ValueObject<LocalTime> {
 
-    public Date value() {
-        return null;
+    public LocalTime value() {
+        return LocalTime.now().plusMinutes(40);
     }
 }
