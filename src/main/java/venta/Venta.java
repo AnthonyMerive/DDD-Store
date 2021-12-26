@@ -45,19 +45,21 @@ public class Venta extends AggregateEvent<VentaID> {
         return domicilioID;
     }
 
-    public Optional<Vendedor> obtenerVendedorPorID(VendedorID vendedorID){
+    //Factory:
+
+    protected Optional<Vendedor> obtenerVendedorPorID(VendedorID vendedorID){
         return vendedores
                 .stream()
                 .filter(vendedor -> vendedor.identity().equals(vendedorID)).findFirst();
     }
 
-    public Optional<Cliente> obtenerClientePorID(ClienteID clienteID){
+    protected Optional<Cliente> obtenerClientePorID(ClienteID clienteID){
         return clientes()
                 .stream()
                 .filter(cliente -> cliente.identity().equals(clienteID)).findFirst();
     }
 
-    public Optional<Producto> obtenerProductoPorID(ProductoID productoID){
+    protected Optional<Producto> obtenerProductoPorID(ProductoID productoID){
         return productos
                 .stream()
                 .filter(producto-> producto.identity().equals(productoID)).findFirst();
@@ -90,7 +92,7 @@ public class Venta extends AggregateEvent<VentaID> {
 
     }
 
-    public void VendedorAgregado(VendedorID vendedorID, Nombre nombre, Dependencia dependencia, MontoRecibido montoRecibido) {
+    public void agregarVendedor(VendedorID vendedorID, Nombre nombre, Dependencia dependencia, MontoRecibido montoRecibido) {
         Objects.requireNonNull(vendedorID);
         Objects.requireNonNull(nombre);
         Objects.requireNonNull(dependencia);

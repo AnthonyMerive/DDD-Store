@@ -20,6 +20,8 @@ public class Contabilidad extends AggregateEvent<ContabilidadID> {
 
     }
 
+    //Factory:
+
     public static Contabilidad from(ContabilidadID contabilidadID, List<DomainEvent> events){
         var contabilidad = new Contabilidad(contabilidadID);
         events.forEach(contabilidad::applyEvent);
@@ -38,19 +40,19 @@ public class Contabilidad extends AggregateEvent<ContabilidadID> {
         return ingresos;
     }
 
-    public Optional<Ganancia> obtenerGananciaPorID(GananciaID gananciaID){
+    protected Optional<Ganancia> obtenerGananciaPorID(GananciaID gananciaID){
         return ganancias()
                 .stream()
                 .filter(ganancia -> ganancia.identity().equals(gananciaID)).findFirst();
     }
 
-    public Optional<Gasto> obtenerGastoPorID(GastoID gastoID){
+    protected Optional<Gasto> obtenerGastoPorID(GastoID gastoID){
         return gastos()
                 .stream()
                 .filter(gasto -> gasto.identity().equals(gastoID)).findFirst();
     }
 
-    public Optional<Ingreso> obtenerIngresoPorID(IngresoID ingresoID){
+    protected Optional<Ingreso> obtenerIngresoPorID(IngresoID ingresoID){
         return ingresos()
                 .stream()
                 .filter(ingreso -> ingreso.identity().equals(ingresoID)).findFirst();

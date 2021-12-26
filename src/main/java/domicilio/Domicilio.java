@@ -24,6 +24,8 @@ public class Domicilio extends AggregateEvent<DomicilioID> {
 
     }
 
+    //Factory:
+
     public static Domicilio from(DomicilioID domicilioID, List<DomainEvent> events){
         var domicilio = new Domicilio(domicilioID);
         events.forEach(domicilio::applyEvent);
@@ -42,19 +44,19 @@ public class Domicilio extends AggregateEvent<DomicilioID> {
         return ordenes;
     }
 
-    public Optional<Repartidor> obtenerRepartidorPorID(RepartidorID repartidorID){
+    protected Optional<Repartidor> obtenerRepartidorPorID(RepartidorID repartidorID){
         return repartidores
                 .stream()
                 .filter(repartidor -> repartidor.identity().equals(repartidorID)).findFirst();
     }
 
-    public Optional<Ruta> obtenerRutaPorID(RutaID rutaID){
+    protected Optional<Ruta> obtenerRutaPorID(RutaID rutaID){
         return rutas()
                 .stream()
                 .filter(ruta -> ruta.identity().equals(rutaID)).findFirst();
     }
 
-    public Optional<Orden> obtenerOrdenPorID(OrdenID ordenID){
+    protected Optional<Orden> obtenerOrdenPorID(OrdenID ordenID){
         return ordenes()
                 .stream()
                 .filter(orden -> orden.identity().equals(ordenID)).findFirst();
