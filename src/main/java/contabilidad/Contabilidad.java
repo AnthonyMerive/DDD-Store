@@ -1,6 +1,7 @@
 package contabilidad;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import contabilidad.entities.*;
 import contabilidad.events.*;
 import contabilidad.values.*;
@@ -17,6 +18,12 @@ public class Contabilidad extends AggregateEvent<ContabilidadID> {
         super(entityId);
         subscribe(new ContabilidadChange(this));
 
+    }
+
+    public static Contabilidad from(ContabilidadID contabilidadID, List<DomainEvent> events){
+        var contabilidad = new Contabilidad(contabilidadID);
+        events.forEach(contabilidad::applyEvent);
+        return contabilidad;
     }
 
     public Set<Ganancia> ganancias() {

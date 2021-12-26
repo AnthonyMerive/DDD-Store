@@ -2,6 +2,7 @@ package venta;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 
+import co.com.sofka.domain.generic.DomainEvent;
 import domicilio.values.DomicilioID;
 import venta.entities.*;
 import venta.events.*;
@@ -20,6 +21,12 @@ public class Venta extends AggregateEvent<VentaID> {
         super(entityId);
         subscribe(new VentaChange(this));
 
+    }
+
+    public static Venta from(VentaID ventaID, List<DomainEvent> events){
+        var venta = new Venta(ventaID);
+        events.forEach(venta::applyEvent);
+        return venta;
     }
 
     public Set<Vendedor> vendedores() {

@@ -2,10 +2,12 @@ package domicilio;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 
+import co.com.sofka.domain.generic.DomainEvent;
 import domicilio.entities.*;
 import domicilio.values.*;
 import domicilio.events.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -20,6 +22,12 @@ public class Domicilio extends AggregateEvent<DomicilioID> {
         super(entityId);
         subscribe(new DomicilioChange(this));
 
+    }
+
+    public static Domicilio from(DomicilioID domicilioID, List<DomainEvent> events){
+        var domicilio = new Domicilio(domicilioID);
+        events.forEach(domicilio::applyEvent);
+        return domicilio;
     }
 
     public Set<Repartidor> repartidores() {
