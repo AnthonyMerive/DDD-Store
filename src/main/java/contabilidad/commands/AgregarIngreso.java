@@ -6,12 +6,17 @@ import contabilidad.values.*;
 public class AgregarIngreso extends Command {
 
     private final IngresoID ingresoID;
+    private final ContabilidadID contabilidadID;
     private final Concepto concepto;
     private final Descripcion descripcion;
     private final Valor valor;
 
     public IngresoID ingresoID() {
         return ingresoID;
+    }
+
+    public ContabilidadID contabilidadID() {
+        return contabilidadID;
     }
 
     public Concepto concepto() {
@@ -26,8 +31,9 @@ public class AgregarIngreso extends Command {
         return valor;
     }
 
-    public AgregarIngreso(IngresoID ingresoID, Concepto concepto, Descripcion descripcion, Valor valor) {
+    public AgregarIngreso(IngresoID ingresoID, ContabilidadID contabilidadID, Concepto concepto, Descripcion descripcion, Valor valor) {
         this.ingresoID = ingresoID;
+        this.contabilidadID = contabilidadID;
         this.concepto = concepto;
         this.descripcion = descripcion;
         this.valor = valor;

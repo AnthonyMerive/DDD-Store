@@ -4,23 +4,21 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import contabilidad.commands.AgregarGanancia;
-import contabilidad.events.ContabilidadCreada;
-import contabilidad.events.GananciaAgregada;
-import contabilidad.useCases.AgregarGananciaUseCase;
-import contabilidad.values.ContabilidadID;
-import contabilidad.values.GananciaID;
-import contabilidad.values.Valor;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import static org.mockito.Mockito.when;
+
+import contabilidad.events.*;
+import contabilidad.values.*;
+import contabilidad.commands.AgregarGanancia;
+import contabilidad.useCases.AgregarGananciaUseCase;
 
 import java.util.List;
-
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class AgregarGananciaTest {

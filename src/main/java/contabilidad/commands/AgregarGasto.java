@@ -6,6 +6,7 @@ import contabilidad.values.*;
 public class AgregarGasto extends Command {
 
     private final GastoID gastoID;
+    private final ContabilidadID contabilidadID;
     private final Concepto concepto;
     private final Descripcion descripcion;
     private final Valor valor;
@@ -14,7 +15,11 @@ public class AgregarGasto extends Command {
         return gastoID;
     }
 
-    public Concepto voncepto() {
+    public ContabilidadID contabilidadID() {
+        return contabilidadID;
+    }
+
+    public Concepto concepto() {
         return concepto;
     }
 
@@ -26,8 +31,9 @@ public class AgregarGasto extends Command {
         return valor;
     }
 
-    public AgregarGasto(GastoID gastoID, Concepto concepto, Descripcion descripcion, Valor valor) {
+    public AgregarGasto(GastoID gastoID, ContabilidadID contabilidadID, Concepto concepto, Descripcion descripcion, Valor valor) {
         this.gastoID = gastoID;
+        this.contabilidadID = contabilidadID;
         this.concepto = concepto;
         this.descripcion = descripcion;
         this.valor = valor;
