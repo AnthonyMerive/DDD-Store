@@ -1,12 +1,21 @@
 package domicilio;
 
 import co.com.sofka.domain.generic.EventChange;
+import contabilidad.events.ContabilidadCreada;
 import domicilio.entities.*;
 import domicilio.events.*;
+
+import java.util.HashSet;
 
 public class DomicilioChange extends EventChange {
 
     public DomicilioChange(Domicilio domicilio) {
+
+        apply((DomicilioCreado event) ->{
+            domicilio.rutas = new HashSet<>();
+            domicilio.repartidores = new HashSet<>();
+            domicilio.ordenes = new HashSet<>();
+        });
 
         apply((OrdenAgregada event) ->{
             var numDeOrdenes = domicilio.ordenes().size();

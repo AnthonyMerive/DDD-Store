@@ -6,12 +6,17 @@ import domicilio.values.*;
 public class AgregarRepartidor extends Command {
 
     private final RepartidorID repartidorID;
+    private final DomicilioID domicilioID;
     private final Nombre nombre;
     private final Telefono telefono;
     private final Ubicacion ubicacion;
 
     public RepartidorID repartidorID() {
         return repartidorID;
+    }
+
+    public DomicilioID domicilioID() {
+        return domicilioID;
     }
 
     public Nombre nombre() {
@@ -26,8 +31,9 @@ public class AgregarRepartidor extends Command {
         return ubicacion;
     }
 
-    public AgregarRepartidor(RepartidorID repartidorID, Nombre nombre, Telefono telefono, Ubicacion ubicacion) {
+    public AgregarRepartidor(RepartidorID repartidorID, DomicilioID domicilioID, Nombre nombre, Telefono telefono, Ubicacion ubicacion) {
         this.repartidorID = repartidorID;
+        this.domicilioID = domicilioID;
         this.nombre = nombre;
         this.telefono = telefono;
         this.ubicacion = ubicacion;

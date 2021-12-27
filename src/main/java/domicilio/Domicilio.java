@@ -20,6 +20,7 @@ public class Domicilio extends AggregateEvent<DomicilioID> {
 
     public Domicilio(DomicilioID entityId) {
         super(entityId);
+        appendChange(new DomicilioCreado(entityId)).apply();
         subscribe(new DomicilioChange(this));
 
     }
