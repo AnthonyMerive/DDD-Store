@@ -19,6 +19,7 @@ public class Venta extends AggregateEvent<VentaID> {
 
     public Venta(VentaID entityId) {
         super(entityId);
+        appendChange(new VentaCreada(entityId)).apply();
         subscribe(new VentaChange(this));
 
     }

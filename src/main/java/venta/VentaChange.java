@@ -4,9 +4,17 @@ import co.com.sofka.domain.generic.EventChange;
 import venta.entities.*;
 import venta.events.*;
 
+import java.util.HashSet;
+
 public class VentaChange extends EventChange {
 
     public VentaChange(Venta venta) {
+
+        apply((VentaCreada event) ->{
+            venta.vendedores = new HashSet<>();
+            venta.clientes = new HashSet<>();
+            venta.productos = new HashSet<>();
+        });
 
         apply((DomicilioAsociado event) ->{
             venta.domicilioID = event.domicilioID();
