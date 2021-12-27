@@ -5,7 +5,7 @@ import contabilidad.values.*;
 
 import java.util.*;
 
-public class Gasto extends Entity<GananciaID> {
+public class Gasto extends Entity<GastoID> {
 
     private Concepto concepto;
     private Descripcion descripcion;

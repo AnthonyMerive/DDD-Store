@@ -5,8 +5,13 @@ import contabilidad.values.*;
 
 public class AgregarGanancia extends Command {
 
+    private final ContabilidadID contabilidadID;
     private final GananciaID gananciaID;
     private final Valor valor;
+
+    public ContabilidadID contabilidadID() {
+        return contabilidadID;
+    }
 
     public GananciaID gananciaID() {
         return gananciaID;
@@ -16,7 +21,8 @@ public class AgregarGanancia extends Command {
         return valor;
     }
 
-    public AgregarGanancia(GananciaID gananciaID, Valor valor) {
+    public AgregarGanancia(ContabilidadID contabilidadID, GananciaID gananciaID, Valor valor) {
+        this.contabilidadID = contabilidadID;
         this.gananciaID = gananciaID;
         this.valor = valor;
     }

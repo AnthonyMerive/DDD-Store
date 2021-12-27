@@ -4,9 +4,17 @@ import co.com.sofka.domain.generic.EventChange;
 import contabilidad.entities.*;
 import contabilidad.events.*;
 
+import java.util.HashSet;
+
 public class ContabilidadChange extends EventChange {
 
     public ContabilidadChange(Contabilidad contabilidad) {
+
+        apply((ContabilidadCreada event) ->{
+            contabilidad.ingresos = new HashSet<>();
+            contabilidad.ganancias = new HashSet<>();
+            contabilidad.gastos = new HashSet<>();
+        });
 
         apply((GananciaAgregada event) ->{
 

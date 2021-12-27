@@ -15,7 +15,7 @@ public class Ganancia extends Entity<GananciaID> {
 
     public Ganancia(GananciaID entityId, Valor valor) {
         super(entityId);
-        this.valor = valor;
+        this.valor = Objects.requireNonNull(valor);
     }
 
     public void actualizarValor(Valor valor){

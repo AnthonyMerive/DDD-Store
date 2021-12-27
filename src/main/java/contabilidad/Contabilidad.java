@@ -16,8 +16,8 @@ public class Contabilidad extends AggregateEvent<ContabilidadID> {
 
     public Contabilidad(ContabilidadID entityId) {
         super(entityId);
+        appendChange(new ContabilidadCreada(entityId)).apply();
         subscribe(new ContabilidadChange(this));
-
     }
 
     //Factory:
@@ -59,6 +59,7 @@ public class Contabilidad extends AggregateEvent<ContabilidadID> {
     }
 
     //Commands:
+
 
     public void agregarGanancia(GananciaID gananciaID, Valor valor) {
         Objects.requireNonNull(gananciaID);

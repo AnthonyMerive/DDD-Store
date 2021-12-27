@@ -17,11 +17,11 @@ public class GananciaAgregada extends DomainEvent {
         return valor;
     }
 
-    public GananciaAgregada(GananciaID gananciaID, Valor valor) {
+    public GananciaAgregada(GananciaID entityID, Valor valor) {
 
         super("ventas.contabilidad.ganancia-agregada");
 
-        this.gananciaID = gananciaID;
+        gananciaID = entityID;
 
         this.valor = valor;
     }
