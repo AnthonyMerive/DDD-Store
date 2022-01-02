@@ -1,0 +1,216 @@
+@startuml
+
+'aggregates Roots:'
+
+class Contabilidad {
+
+    #Set<Ganancia> ganancias
+    #Set<Gasto> gastos
+    #Set<Ingreso> ingresos
+
+    +Set<Ganancia> ganancias()
+    +Set<Gasto> gastos()
+    +Set<Ingreso> ingresos()
+
+    #Optional<Ganancia> obtenerGananciaPorID()
+    #Optional<Gasto> obtenerGastoPorID()
+    #Optional<Ingreso> obtenerIngresoPorID()
+    +void agregarGanancia()
+    +void agregarGasto()
+    +void agregarIngreso()
+}
+
+class Domicilio {
+
+    #Set<Repartidor> repartidores
+    #Set<Ruta> rutas
+    #Set<Orden> ordenes
+
+    +Set<Repartidor> repartidores()
+    +Set<Ruta> rutas()
+    +Set<Orden> ordenes()
+
+    #Optional<Repartidor> obtenerRepartidorPorID()
+    #Optional<Ruta> obtenerRutaPorID()
+    #Optional<Orden> obtenerOrdenPorID()
+    +void agregarRepartidor()
+    +void agregarRuta()
+    +void agregarOrden()
+}
+
+class Venta {
+
+    #Set<Vendedor> vendedores
+    #Set<Cliente> clientes
+    #Set<Producto> productos
+    #DomicilioID domicilioID
+
+    +Set<Vendedor> vendedores()
+    +Set<Cliente> clientes()
+    +Set<Producto> productos()
+    +DomicilioID domicilioID()
+
+    #Optional<Vendedor> obtenerVendedorPorID()
+    #Optional<Cliente> obtenerClientePorID()
+    #Optional<Producto> obtenerProductoPorID()
+    +void agregarVendedor()
+    +void agregarCliente()
+    +void agregarProducto()
+    +void asociarDomicilio()
+}
+
+'Entities:'
+
+class Repartidor {
+
+        -Nombre nombre
+        -Telefono telefono
+        -Ubicacion ubicacion
+
+        +Nombre nombre()
+        +Telefono telefono()
+        +Ubicacion ubicacion()
+
+        +Repartidor()
+        +void actualizarNombre()
+        +void actualizarTelefono()
+        +void actualizarUbicacion()
+}
+
+class Ruta {
+
+        -LocalSalida localSalida
+        -DireccionEntrega direccionEntrega
+        -CostoDomicilio costoDomicilio
+
+        +LocalSalida localSalida()
+        +DireccionEntrega direccionEntrega()
+        +CostoDomicilio costoDomicilio()
+
+        +Ruta()
+        +void actualizarLocalSalida()
+        +void actualizarDireccionEntrega()
+        +void actualizarCostoDomicilio()
+}
+
+class Orden {
+
+        -Nombre nombre
+        -Telefono telefono
+        -Ubicacion ubicacion
+
+        +Nombre nombre()
+        +Telefono telefono()
+        +Ubicacion ubicacion()
+
+        +Repartidor()
+        +void actualizarNombre()
+        +void actualizarTelefono()
+        +void actualizarUbicacion()
+}
+
+class Cliente {
+
+        -Nombre nombre
+        -Direccion direccion
+        -MontoPago montoPago
+
+        +Nombre nombre()
+        +Direccion direccion()
+        +MontoPago montoPago()
+
+        +cliente()
+        +void actualizarNombre()
+        +void actualizarDireccion()
+        +void actualizarMontoPago()
+}
+
+class Vendedor {
+
+        -Nombre nombre
+        -Dependencia dependencia
+        -MontoRecibido montoRecibido
+
+        +Nombre nombre()
+        +Dependencia dependencia()
+        +MontoRecibido montoRecibido()
+
+        +cliente()
+        +void actualizarNombre()
+        +void actualizarDependencia()
+        +void actualizarMontoRecibido()
+}
+
+class Producto {
+
+        -Nombre nombre
+        -Descripcion descripcion
+        -CostoProducto costoProducto
+
+        +Nombre nombre()
+        +Descripcion descripcion()
+        +CostoProducto costoProducto()
+
+        +Producto()
+        +void actualizarNombre()
+        +void actualizarDescripcion()
+        +void actualizarCostoProducto()
+}
+
+class Ganancia {
+
+        -Valor valor
+
+        +Valor valor()
+
+        +Ganancia()
+        +void actualizarValor()
+}
+
+class Ingreso {
+
+        -Concepto concepto
+        -Descripcion descripcion
+        -Valor valor
+
+        +Concepto concepto()
+        +Descripcion descripcion()
+        +Valor valor()
+
+        +Ingreso()
+        +void actualizarConcepto()
+        +void actualizarDescripcion()
+        +void actualizarCostoValor()
+}
+
+class Gasto {
+
+        -Concepto concepto
+        -Descripcion descripcion
+        -Valor valor
+
+        +Concepto concepto()
+        +Descripcion descripcion()
+        +Valor valor()
+
+        +Gasto()
+        +void actualizarConcepto()
+        +void actualizarDescripcion()
+        +void actualizarCostoValor()
+}
+
+Venta ..> Domicilio
+Venta ..> Contabilidad
+
+Domicilio --> Repartidor
+Domicilio --> Ruta
+Domicilio --> Orden
+
+Venta --> Cliente
+Venta --> Vendedor
+Venta --> Producto
+
+Contabilidad --> Ingreso
+Contabilidad --> Ganancia
+Contabilidad --> Gasto
+@enduml
