@@ -199,6 +199,8 @@ class Gasto {
         +void actualizarCostoValor()
 }
 
+'Relations:'
+
 Venta ..> Domicilio
 Venta ..> Contabilidad
 
